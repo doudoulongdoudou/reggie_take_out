@@ -14,6 +14,13 @@ spring:
   #jackson时间配置
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+  #配置redis
+  data:
+    redis:
+      host: 192.168.136.128
+      port: 6379
+      database: 0
+      password: 111111
 
 # mybatis-plus的配置
 mybatis-plus:
