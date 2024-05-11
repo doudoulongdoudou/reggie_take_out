@@ -1,0 +1,40 @@
+# server配置
+server:
+  port: 8080
+
+# 连接池配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://localhost:3306/ddl_rjwm?serverTimezone=Asia/Shanghai&userUnicode=true&characterEncoding=utf-8
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  #jackson时间配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+# mybatis-plus的配置
+mybatis-plus:
+  configuration:
+    # 驼峰命名
+    map-underscore-to-camel-case: true
+    # 控制台日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.ddl.pojo
+  global-config:
+    db-config:
+      #主键策略自增长
+      id-type: assign_id
+      #全局逻辑删除
+      logic-delete-field: isDeleted
+      #逻辑已删除值(默认为 1)
+      logic-delete-value: 1
+      # 逻辑未删除值(默认为 0)
+      logic-not-delete-value: 0
+
+#指定图片存放路径
+reggie:
+  path: F:\MysqlImages\reggieImages\
+
