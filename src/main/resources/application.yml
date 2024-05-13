@@ -11,16 +11,21 @@ spring:
       username: root
       password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
-  #jackson时间配置
+  # jackson时间配置
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
-  #配置redis
+  # 配置redis
   data:
     redis:
       host: 192.168.136.128
       port: 6379
       database: 0
       password: 111111
+  # 配置SpringCache缓存
+  cache:
+    redis:
+      # 设置缓存数据的过期时间
+      time-to-live: 1800000
 
 # mybatis-plus的配置
 mybatis-plus:
@@ -32,16 +37,16 @@ mybatis-plus:
   type-aliases-package: com.ddl.pojo
   global-config:
     db-config:
-      #主键策略自增长
+      # 主键策略自增长
       id-type: assign_id
-      #全局逻辑删除
+      # 全局逻辑删除
       logic-delete-field: isDeleted
-      #逻辑已删除值(默认为 1)
+      # 逻辑已删除值(默认为 1)
       logic-delete-value: 1
       # 逻辑未删除值(默认为 0)
       logic-not-delete-value: 0
 
-#指定图片存放路径
+# 指定图片存放路径
 reggie:
   path: F:\MysqlImages\reggieImages\
 

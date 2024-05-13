@@ -13,9 +13,12 @@ import com.ddl.reggie.service.DishService;
 import com.ddl.reggie.service.SetmealDishService;
 import com.ddl.reggie.service.SetmealService;
 import com.ddl.reggie.utils.R;
+import com.ddl.reggie.utils.ValidateCodeUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,6 +59,7 @@ public class SetmealController {
      * @return
      */
     @PostMapping
+    @CacheEvict(value = "setmealCache", allEntries = true)
     public R<String> save(@RequestBody SetmealDto setmealDto) {
         setmealService.saveWithDish(setmealDto);
         return R.success("新增套餐成功");
@@ -102,8 +106,9 @@ public class SetmealController {
      * @param ids
      * @return
      */
-    @Transactional
     @DeleteMapping
+    @Transactional
+    @CacheEvict(value = "setmealCache", allEntries = true)
     public R<String> removeById(Long[] ids) {
         for (int i = 0; i < ids.length; i++) {
             Setmeal setmeal = setmealService.getById(ids[i]);
@@ -155,6 +160,7 @@ public class SetmealController {
      * @return
      */
     @GetMapping("/list")
+    @Cacheable(value = "setmealCache", key = "#categoryId+ '_'+ #status")
     public R<List<Setmeal>> list(Long categoryId, Integer status) {
         LambdaQueryWrapper<Setmeal> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(categoryId != null, Setmeal::getCategoryId, categoryId);
@@ -166,6 +172,7 @@ public class SetmealController {
 
     /**
      * 套餐详情页
+     *
      * @param id
      * @return
      */
@@ -175,12 +182,12 @@ public class SetmealController {
         queryWrapper.eq(id != null, SetmealDish::getSetmealId, id);
         List<SetmealDish> list = setmealDishService.list(queryWrapper);
 
-        List<SetmealDishDto> setmealDishDtoList = list.stream().map((item)->{
+        List<SetmealDishDto> setmealDishDtoList = list.stream().map((item) -> {
             SetmealDishDto setmealDishDto = new SetmealDishDto();
-            BeanUtils.copyProperties(item,setmealDishDto);
+            BeanUtils.copyProperties(item, setmealDishDto);
             Long dishId = item.getDishId();
             Dish dish = dishService.getById(dishId);
-            if (dish !=null){
+            if (dish != null) {
                 String image = dish.getImage();
                 setmealDishDto.setImage(image);
             }
