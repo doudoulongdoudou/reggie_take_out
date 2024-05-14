@@ -50,7 +50,12 @@ public class LoginCheckFilter implements Filter {
                 "/user/sendMsg",
                 //移动端登录
                 "/user/login",
-                "/user/loginout"
+                "/user/loginout",
+                //knife4j
+                "/doc.html/**",
+                "/webjars/**",
+//                "/swagger-resources",
+                "/v3/api-docs/**"
         };
 
 

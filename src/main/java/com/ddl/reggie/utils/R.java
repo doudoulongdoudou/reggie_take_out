@@ -1,5 +1,6 @@
 package com.ddl.reggie.utils;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.util.Map;
  * @Create 24/4/2024 下午10:25
  */
 @Data
+@Schema(name = "返回结果",description = "返回结果")
 public class R<T> implements Serializable {
 
     //编码：1成功，0和其它数字为失败

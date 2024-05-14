@@ -7,12 +7,14 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
  * @TableName setmeal
  */
 @TableName(value ="setmeal")
+@Schema(name = "套餐实体类",description = "套餐实体类")
 @Data
 public class Setmeal implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING)

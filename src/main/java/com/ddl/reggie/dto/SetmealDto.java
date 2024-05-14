@@ -2,6 +2,7 @@ package com.ddl.reggie.dto;
 
 import com.ddl.reggie.pojo.Setmeal;
 import com.ddl.reggie.pojo.SetmealDish;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  */
 
 @Data
+@Schema(name = "套餐Dto",description = "套餐Dto")
 public class SetmealDto extends Setmeal {
 
     private List<SetmealDish> setmealDishes;
