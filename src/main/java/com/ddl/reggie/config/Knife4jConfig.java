@@ -31,7 +31,7 @@ public class Knife4jConfig {
                         // 开发者联系方式
                         .contact(new Contact()
                                 .name("豆豆龙")
-                                .email("feng0039@gmail.com"))
+                                .email("123456@gmail.com"))
                 )
                 .externalDocs(new ExternalDocumentation()
                         .description("瑞吉外卖-接口文档")

@@ -24,9 +24,9 @@ public class SMSUtils {
         // 建议使用更安全的 STS 方式，更多鉴权访问方式请参见：https://help.aliyun.com/document_detail/378657.html。
         com.aliyun.teaopenapi.models.Config config = new com.aliyun.teaopenapi.models.Config()
                 // 必填，请确保代码运行环境设置了环境变量 ALIBABA_CLOUD_ACCESS_KEY_ID。
-                .setAccessKeyId("LTAI5tLKXm6RkRGpMHohcH6b")
+                .setAccessKeyId("LT335tLm61kRGpMHohcH61")
                 // 必填，请确保代码运行环境设置了环境变量 ALIBABA_CLOUD_ACCESS_KEY_SECRET。
-                .setAccessKeySecret("TndBh990cqjZevJL3Qtf4dYPbAkZIN");
+                .setAccessKeySecret("TndB23qjZevJL314dYPbA3N");
         // Endpoint 请参考 https://api.aliyun.com/product/Dysmsapi
         config.endpoint = "dysmsapi.aliyuncs.com";
         return new com.aliyun.dysmsapi20170525.Client(config);
@@ -48,7 +48,7 @@ public class SMSUtils {
                 .setSignName(signName)
                 //.setTemplateCode("SMS_154950909")
                 .setTemplateCode(templateCode)
-                //.setPhoneNumbers("15268269261")
+                //.setPhoneNumbers("15222269261")
                 .setPhoneNumbers(phoneNumbers)
                 //.setTemplateParam("{\"code\":\"6666\"}");
                 .setTemplateParam("{\"code\":\""+param+"\"}");
